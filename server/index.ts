@@ -1,7 +1,6 @@
 import express from "express";
+import { backendSetup } from "setups";
 
 const app = express();
 
-app.listen(8000, () => {
-	console.log("Server is started!");
-});
+backendSetup(app);
