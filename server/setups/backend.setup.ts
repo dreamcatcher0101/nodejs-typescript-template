@@ -7,6 +7,8 @@ import { ROUTE_VERSION } from "config";
 
 import { MESSAGES } from "consts";
 
+import { requestLoggerMiddleware } from "middlewares";
+
 import appRoutes from "routes";
 
 dotenvConfig();
@@ -17,6 +19,8 @@ export const backendSetup = (app: Express) => {
 	app.use(express.json());
 	app.use(cors());
 	app.use(bodyParserJSON());
+
+	app.use(requestLoggerMiddleware);
 
 	// Health check
 	app.use("/health", function (_req, res) {
