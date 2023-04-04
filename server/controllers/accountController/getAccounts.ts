@@ -42,17 +42,26 @@ const getSPLTokenAccountsHandler = async (
 	const hashTable = {};
 
 	tokenList.forEach((token) => {
-		hashTable[token.address] = true;
+		hashTable[token.address] = token;
 	});
 
-	const listedTokens = accountTokens.filter(
-		(account) =>
-			account.account.data.parsed.info.tokenAmount.decimals > 0 &&
-			hashTable[account.account.data.parsed.info.mint]
-	);
+	const tokens = accountTokens
+		.filter(
+			(account) =>
+				account.account.data.parsed.info.tokenAmount.decimals > 0 &&
+				hashTable[account.account.data.parsed.info.mint]
+		)
+		.map((account) => ({
+			name: hashTable[account.account.data.parsed.info.mint].name,
+			symbol: hashTable[account.account.data.parsed.info.mint].symbol,
+			mintAddress: account.account.data.parsed.info.mint,
+			tokenAccountAddress: account.account.owner,
+			amount: account.account.data.parsed.info.tokenAmount.amount,
+			imageUrl: hashTable[account.account.data.parsed.info.mint].logoURI,
+		}));
 
 	res.status(httpStatus.OK).json({
-		listedTokens,
+		tokens,
 	});
 };
 

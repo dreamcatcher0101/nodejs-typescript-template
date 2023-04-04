@@ -7,6 +7,9 @@ export const getNewToken = (publicKey: string): PublicKey => {
 
 interface IToken {
 	address: string;
+	symbol: string;
+	name: string;
+	logoURI: string;
 }
 
 interface ITokenList {
@@ -29,10 +32,12 @@ interface IAccount {
 					mint: string;
 					tokenAmount: {
 						decimals: number;
+						amount: number;
 					};
 				};
 			};
 		};
+		owner: string;
 	};
 	pubkey: string;
 }
