@@ -10,8 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/dreamcatcher0101/nodejs-typescript-template.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "NodeJS",
+    "Template"
+  ],
+  "author": "Dream Catcher",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dreamcatcher0101/nodejs-typescript-template/issues"
