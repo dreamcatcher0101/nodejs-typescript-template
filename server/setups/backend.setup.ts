@@ -1,6 +1,6 @@
 import { json as bodyParserJSON } from "body-parser";
 import cors from "cors";
-import { config as dotenvConfig } from "dotenv";
+import "dotenv/config";
 import express, { Express } from "express";
 
 import { ROUTE_VERSION } from "config";
@@ -10,8 +10,6 @@ import { MESSAGES } from "consts";
 import { requestLoggerMiddleware } from "middlewares";
 
 import appRoutes from "routes";
-
-dotenvConfig();
 
 const port = process.env.PORT || 8000;
 
