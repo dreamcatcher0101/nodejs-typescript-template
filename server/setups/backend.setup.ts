@@ -7,7 +7,7 @@ import { ROUTE_VERSION } from "config";
 
 import { MESSAGES } from "consts";
 
-import { requestLoggerMiddleware } from "middlewares";
+import { errorHandlerMiddleware, requestLoggerMiddleware } from "middlewares";
 
 import appRoutes from "routes";
 
@@ -26,6 +26,8 @@ export const backendSetup = (app: Express) => {
 	});
 
 	app.use(`api/${ROUTE_VERSION}`, appRoutes);
+
+	app.use(errorHandlerMiddleware);
 
 	app.listen(port, () => {
 		console.info(MESSAGES.SERVER.SUCCESSFULLY_STARTED);
