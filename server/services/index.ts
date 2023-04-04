@@ -1,1 +1,1 @@
-export {};
+export * as testService from "./test.service";

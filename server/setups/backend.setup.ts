@@ -25,7 +25,7 @@ export const backendSetup = (app: Express) => {
 		res.send("OK");
 	});
 
-	app.use(`api/${ROUTE_VERSION}`, appRoutes);
+	app.use(`/api/${ROUTE_VERSION}`, appRoutes);
 
 	app.use(errorHandlerMiddleware);
 

@@ -1,1 +1,1 @@
-export {};
+export * as testController from "./testController";
